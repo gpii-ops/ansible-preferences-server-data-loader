@@ -12,6 +12,13 @@
   delegate_to: 127.0.0.1
   become: no
 
+- name: register the contents of the review4 data temporary directory (on control host) to use for templating
+  shell: ls /tmp/prefData/review4/*.json
+  register: preferences_server_tmp_pref_data_review4
+  ignore_errors: true
+  delegate_to: 127.0.0.1
+  become: no
+
 - name: create directory on remote host to hold modified data files
   file:
     dest: /tmp/prefData/
@@ -22,3 +29,9 @@
     src: uploadedData.j2
     dest: "{{ item[1] }}"
   with_indexed_items: "{{ preferences_server_tmp_pref_data.stdout_lines }}"
+
+- name: template out modified review4 test data to the remote host
+  template:
+    src: uploadedDataReview4.j2
+    dest: "{{ item[1] }}"
+  with_indexed_items: "{{ preferences_server_tmp_pref_data_review4.stdout_lines }}"
