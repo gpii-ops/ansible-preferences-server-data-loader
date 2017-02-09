@@ -1,0 +1,5 @@
+{
+  "_id":"{{ item[1]|replace('.json','')|replace('/tmp/prefData/review4/','') }}",
+  "value":
+    {{ lookup('file', item[1]) }}
+}

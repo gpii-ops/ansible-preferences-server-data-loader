@@ -22,6 +22,10 @@
   shell: kanso upload {{ item }} http://{{ preferences_server_data_loader_couchdb_host_address }}/preferences
   with_fileglob: /tmp/prefData/*.json
 
+- name: upload the modified review4 test preferences files to couchdb
+  shell: kanso upload {{ item }} http://{{ preferences_server_data_loader_couchdb_host_address }}/preferences
+  with_fileglob: /tmp/prefData/review4/*.json
+
 - name: remove kanso
   npm:
     name: kanso
