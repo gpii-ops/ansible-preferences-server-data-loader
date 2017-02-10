@@ -13,7 +13,8 @@ Requirements
 Role Variables
 --------------
 
-* `preferences_server_data_loader_couchdb_host_address: couchdb` (default - localhost:5984)
+* `preferences_server_data_loader_couchdb_host_address: couchdb` (default - localhost)
+* `preferences_server_data_loader_couchdb_host_port: 5984` (default - 5984)
 * `preferences_server_data_loader_cleanup_after`: whether or not to delete kanso and the temporary directory (default - true)
 * `preferences_server_data_loader_clear_index`: should we clear the /preferences index in couchdb and create it again? (default - true)
 
@@ -32,7 +33,8 @@ Example Playbook
   remote_user: vagrant
   become: yes
   vars:
-    - preferences_server_data_loader_couchdb_host_address: 192.168.99.100:5984
+    - preferences_server_data_loader_couchdb_host_address: 192.168.99.100
+    - preferences_server_data_loader_couchdb_host_port: 5984
     - preferences_server_data_loader_cleanup_after: false
 
   roles:

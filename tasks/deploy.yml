@@ -1,13 +1,13 @@
 - name: delete couchdb index if it exists
   uri:
-    url: http://{{ preferences_server_data_loader_couchdb_host_address }}/preferences
+    url: http://{{ preferences_server_data_loader_couchdb_host_address }}:{{ preferences_server_data_loader_port }}/preferences
     method: DELETE
     status_code: 200,404 # succeeds if it either deletes the index or returns that it can't be deleted due to not existing
   when: preferences_server_data_loader_clear_index
 
 - name: create the couchdb index
   uri:
-    url: http://{{ preferences_server_data_loader_couchdb_host_address }}/preferences
+    url: http://{{ preferences_server_data_loader_couchdb_host_address }}:{{ preferences_server_data_loader_port }}/preferences
     method: PUT
     status_code: 201
   when: preferences_server_data_loader_clear_index
@@ -19,11 +19,11 @@
     global: yes
 
 - name: upload the modified test preferences files to couchdb
-  shell: kanso upload {{ item }} http://{{ preferences_server_data_loader_couchdb_host_address }}/preferences
+  shell: kanso upload {{ item }} http://{{ preferences_server_data_loader_couchdb_host_address }}:{{ preferences_server_data_loader_port }}/preferences
   with_fileglob: /tmp/prefData/*.json
 
 - name: upload the modified review4 test preferences files to couchdb
-  shell: kanso upload {{ item }} http://{{ preferences_server_data_loader_couchdb_host_address }}/preferences
+  shell: kanso upload {{ item }} http://{{ preferences_server_data_loader_couchdb_host_address }}:{{ preferences_server_data_loader_port }}/preferences
   with_fileglob: /tmp/prefData/review4/*.json
 
 - name: remove kanso

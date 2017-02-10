@@ -1,7 +1,9 @@
 ---
 # defaults file for ansible-preferences-server-data-loader
 
-preferences_server_data_loader_couchdb_host_address: localhost:5984
+preferences_server_data_loader_couchdb_host_address: localhost
+preferences_server_data_loader_couchdb_host_port: 5984
+
 preferences_server_data_loader_cleanup_after: true
 preferences_server_data_loader_clear_index: true
 
