@@ -1,6 +1,6 @@
 - name: Test a user endpoint
   uri:
-    url: "http://{{ preferences_server_data_loader_couchdb_host_address }}:{{ preferences_server_data_loader_port }}/preferences/carla"
+    url: "http://{{ preferences_server_data_loader_couchdb_host_address }}:{{ preferences_server_data_loader_couchdb_host_port }}/preferences/carla"
     status_code: 200
     follow_redirects: all
     return_content: yes
