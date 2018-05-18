@@ -1,3 +1,5 @@
+**DEPRECATED**: The settings that this role manages are now available through environment variables in [GPII/universal](https://github.com/GPII/universal). See [GPII-3094](https://issues.gpii.net/browse/GPII-3049).
+
 GPII Preferences Server Data Loader
 =========
 
